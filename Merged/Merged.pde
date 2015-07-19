@@ -4,10 +4,10 @@ PImage bulletImage;
 PImage enemyImage;
 PImage ballImage;
 PImage nemesisImage;
-String theme = "Fire Hero";
-
+String theme = "Ice Tamer";
 void handleCollision(Body one, Body two)
 {
+  println("in collision");
   String userDataOne = getUserData(one);
   String userDataTwo = getUserData(two);
 
@@ -38,7 +38,7 @@ void handleCollision(Body one, Body two)
     bodyListRemove(bullets, one);
     bodyListRemove(nemesis3, two);
   }
-  if (compareString(userDataOne, "Bullet")&&compareString(userDataTwo, "Nemeisis"))  
+  if (compareString(userDataOne, "Enemy")&&compareString(userDataTwo, "Nemeisis"))  
   {
     destroyBody(one);
     destroyBody(two);
@@ -164,7 +164,7 @@ void setup()
   createPlayer();
   playerImage=loadImage(theme + " mega.png");
   backgroundImage=loadImage(theme + " background.png");
-  bulletImage=loadImage(theme + " bullet.png");
+
   enemyImage=loadImage(theme + " pawn.png");
   ballImage=loadImage(theme + " ball.png");
   nemesisImage=loadImage(theme + " knight.png");
@@ -198,28 +198,32 @@ void doInput()
     setSpeed(player, 20);
   }
 
-  if (isKeyPressed('j'))
-  {
-    shootBullet(bulletSpeed, 180);
-  } else if (isKeyPressed('k'))
-  {
-    shootBullet(bulletSpeed, 270);
-  } else if (isKeyPressed('i'))
-  {
-    shootBullet(bulletSpeed, 90);
-  } else if (isKeyPressed('l'))
-  {
-    shootBullet(bulletSpeed, 0);
-  } else if (isKeyPressed('J'))
+  //  if(isKeyPressed('j'))
+  // {
+  //   shootBullet(bulletSpeed,180);
+  //  }
+  //  else if(isKeyPressed('k'))
+  //  {
+  //    shootBullet(bulletSpeed,270);
+  //  }
+  //  else if(isKeyPressed('i'))
+  //  {
+  //    shootBullet(bulletSpeed,90);
+  //  }
+  //  else if(isKeyPressed('l'))
+  //  {
+  //    shootBullet(bulletSpeed,0);
+  //  }
+  if (isKeyTriggered('j'))
   {
     shootBall(bulletSpeed, 180);
-  } else if (isKeyPressed('K'))
+  } else if (isKeyTriggered('k'))
   {
     shootBall(bulletSpeed, 270);
-  } else if (isKeyPressed('I'))
+  } else if (isKeyTriggered('i'))
   {
     shootBall(bulletSpeed, 90);
-  } else if (isKeyPressed('L'))
+  } else if (isKeyTriggered('l'))
   {
     shootBall(bulletSpeed, 0);
   }
